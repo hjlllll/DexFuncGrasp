@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<world>
+	<graspableBody>
+		<filename>/home/lm/Documents/ddg_data/grasp_dataset/good_shapes/bigbird_cholula_chipotle_hot_sauce_scaled.obj.smoothed.xml</filename>
+		<transform>
+			<fullTransform>(0.7073883 0.0 -0.7068252 0.0)[+0 +0 +0]</fullTransform>
+		</transform>
+	</graspableBody>
+	<robot>
+		<filename>/home/lm/graspit/models/robots/ShadowHand_gai/our_hand.xml</filename>
+		<dofValues>0.19931015 0.1008598 0.2813955 1.4965017 0 0.15885621 0.38450637 1.0609072 0 0.044385884 0.45806035 1.5708 0.18405396385192874 -0.08008987 0.40211755 1.2745594 0 0.44517913 0.7455902 0.1168298 0.2845826 0.57085776</dofValues>
+		<transform>
+			<fullTransform>(0.68752766 0.49584532 0.3853003 0.36467353)[-183.85104 -73.6472 47.151768]</fullTransform>
+		</transform>
+	</robot>
+	<camera>
+		<position>-2.21912 -6.21883 +479.86</position>
+		<orientation>+0 +0 +0 +1</orientation>
+		<focalDistance>+300.068</focalDistance>
+	</camera>
+</world>
