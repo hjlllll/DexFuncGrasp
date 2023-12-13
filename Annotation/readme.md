@@ -25,7 +25,7 @@ conda activate annotation
 
 ### Grasp pose collection
 
-First, create a folder, for example, named ***/Grasp_Pose ***.
+First, create a folder, for example, named ***/Grasp_Pose***.
 
 Then, run, which **--idx** means the id of category, and -**-instance** means which object to be grasped, **--cam_1** and **--cam_2** means the ids of them:
 
