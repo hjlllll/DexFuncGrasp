@@ -6,3 +6,7 @@ pyquaternion
 scipy
 numba
 pyrealsense2
+transforms3d
+trimesh
+urdf_parser_py
+plotly
