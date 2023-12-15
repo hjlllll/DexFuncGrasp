@@ -12,16 +12,44 @@ two RGB cameras ===== our frame_shape = [720, 1280]
 one realsense camera ==== we use Inter SR305
 
 ```
+- Ubuntu 20.04 (optional)
+
+- Python 3.8
+
+- PyTorch 1.10.1
+
+- Numpy 1.22.0
+
+- mediapipe 0.8.11
+
+- [pytorch-kinematics](https://github.com/PKU-EPIC/DexGraspNet/tree/main/thirdparty/pytorch_kinematics/pytorch_kinematics)  0.3.0 
+
+- [Isaac Gym](https://github.com/) preview 4.0 
+
+- CUDA 11.1
 
 ### Common Packages
 
 ```bash
-conda create -n annotation python==3.8.13
-conda activate annotation
+conda create -n annotate python==3.8.13
+conda activate annotate
 
-# here install pytorch with cuda
+# Install pytorch with cuda
+pip install torch==1.10.1 torchvision==0.11.2 ## or using offical code from pytorch website
+pip install numpy==1.22.0
+cd Annotation/
+cd pytorch_kinematics/ #need download from up link
+pip install -e.
+cd ..
+pip install -r requirement.txt
 
+# Install IsaacGym : 
+# download from up link and put in to folder Annotation/
+cd IsaacGym/python/
+pip install -e .
+export LD_LIBRARY_PATH=/home/your/path/to/anaconda3/envs/annotate/lib
 ```
+
 
 ### Grasp pose collection
 
@@ -35,12 +63,18 @@ python shadow_dataset_human_shadow_add_issacgym_system_pytorch3d_mesh_new_datase
 
 Then the grasp pose are saved in dir ***Grasp_Pose/***.
 
-#### Using IsaacGym to verify meanwhile.
+#### Using IsaacGym to verify meanwhile (open an another terminal at the same time).
 
-We read the grasp pose file from ***Grasp_Pose/***. and sent to IsaacGym to verify at the same time, success grasps will be saved in dir ***Refine_Pose/***.
+We read the grasp pose file from ***Grasp_Pose/***. and sent to IsaacGym to verify at the same time, success grasps and collected success rate will be saved in dir ***refine_pose_sift/***.
 
 ```bash
 cd..
-cd IsaacGym-DexFuncGrasp
+cd IsaacGym/python
 python grasp_gym_runtime_white_new_data.py --pipeline cpu --grasp_mode dynamic --idx 0 --instance 0
+```
+
+
+#### Other dexterous hand collection demo (Optional)
+```bash
+python shadow_dataset_human_shadow_add_issacgym_system_pytorch3d_mesh_new_dataset_multi_dexterous.py --idx 0 --instance 0 --cam_1 6 --cam_2 4
 ```
