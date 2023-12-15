@@ -1,5 +1,5 @@
 # Annotation system
-<!--img src="method-pipeline.png" width="840px"-->
+<!--img src="method-pipeline2.png" width="840px"-->
 This folder is for our Annotation system, we use TeachNet mapping human hand to ShadowHand and collect functional dexterous hand grasp. Other dexterous hands collection which use directly angle mapping from ShadowHand are also provided.
 
 ## Dependencies
