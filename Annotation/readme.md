@@ -54,9 +54,9 @@ export LD_LIBRARY_PATH=/home/your/path/to/anaconda3/envs/annotate/lib
 
 ### Grasp pose collection
 
-*(1)* Follow the instruction from [handpose3d](https://github.com/TemugeB/handpose3d), get the camera_paremeters folder, or use mine.
+*(1)* Set the cameras in real as shown in the figure.
 
-*(2)* Set the cameras in real as shown in the figure.
+*(2)* Follow the instruction from [handpose3d](https://github.com/TemugeB/handpose3d), get the camera_paremeters folder, or use mine.
 
 *(3)* Create a folder, for example, named ***/Grasp_Pose***.
 
