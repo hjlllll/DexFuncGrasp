@@ -218,7 +218,7 @@ python trans_unit_dataset_func.py
 </div>
 
 - We collect grasps through steps above. And name DFG dataset.
-- Download source meshes and grasp labels for 12 categories from [DFG](https://shapenet.org/download/shapenetcore) dataset.
+- Download source meshes and grasp labels for 12 categories from [DFG]() dataset.
 - Arrange the files as follows:
 ```
 |-- DFG_dataset
