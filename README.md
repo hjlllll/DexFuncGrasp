@@ -141,7 +141,7 @@ python shadow_dataset_human_shadow_add_issacgym_system_pytorch3d_mesh_new_datase
 
 ## Grasp Transfer for Dataset Extension
 <div align=center>
-<img src="pic/network-transfer.png" width="740px">
+<img src="pic/method-transfer.png" width="740px">
 </div>
 
 ### Dependencies
@@ -218,17 +218,19 @@ python trans_unit_dataset_func.py
 </div>
 
 - We collect grasps through steps above. And name DFG dataset.
-- Download source meshes and grasp labels for 12 categories from [DFG]() dataset.
+- Download source meshes and grasp labels for 12 categories from [DFG](https://shapenet.org/download/shapenetcore) dataset.
 - Arrange the files as follows:
 ```
 |-- DFG_dataset
     |-- Annotation
         |-- DFG_dataset
             |-- Grasps
-                |-- mug
-                |-- bowl
-                |-- bottle
-                |-- camera
+                |-- 0_unit_025_mug
+                |-- 0_unit_mug_s001
+                |-- 1_unit_bowl_s101
+                |-- 1_unit_bowl_s102
+                |-- 4_unit_bottle12
+                |-- 4_unit_bottle13
                 | ...
 ```
 
@@ -237,7 +239,9 @@ python trans_unit_dataset_func.py
 <img src="pic/network.png" width="740px">
 </div>
 
-- As we propose this dataset, we provide the baseline method based on CVAE as follows:
+- As we propose this dataset, we provide the baseline method based on CVAE as shown in figure above:
+
+- First, we train the off-the-shelf 
 
 ## Simulation Experiment
 <div align=center>
