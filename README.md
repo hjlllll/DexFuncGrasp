@@ -4,7 +4,7 @@
     <p align="center">Jinglue Hang, Xiangbo Lin&dagger;, Tianqiang Zhu, Xuanheng Li, Rina Wu, Xiaohong Ma and Yi Sun;<br />
     Dalian University of Technology<br />
     &dagger; corresponding author<br />
-    <a href='https://hjlllll.github.io/DFG/'>project page</a> 
+    <a href='https://hjlllll.github.io/DFG/'>project page</a> | 
 
 </p>
 
@@ -20,7 +20,7 @@
 
 4. [DFG Dataset](#dfg-dataset)
 
-5. [Dexterous Grasp Generation Baseline](#dexterous-grasp-generation-baseline)
+5. [DexFuncGraspNet](#dexfuncgraspnet)
 
 6. [Simulation Experiment](#simulation-experiment)
 
@@ -39,7 +39,27 @@
 
 Robot grasp dataset is the basis of designing the robot’s grasp generation model. Compared with the building grasp dataset for Low-DOF grippers, it is harder for High-DOF dexterous robot hand. Most current datasets meet the needs of generating stable grasps, but they are not suitable for dexterous hands to complete human-like functional grasp, such as grasp the handle of a cup or pressing the button of a flashlight, so as to enable robots to complete subsequent functional manipulation action autonomously, and there is no dataset with functional grasp pose annotations at present. This paper develops a unique Cost-Effective Real-Simulation Annotation System by leveraging natural hand’s actions. The system is able to capture a functional grasp of a dexterous hand in a simulated environment assisted by human demonstration in real world. By using this system, dexterous grasp data can be collected efficiently as well as cost-effective. Finally, we construct the first dexterous functional grasp dataset with rich pose annotations. A Functional Grasp Synthesis Model is also provided to validate the effectiveness of the proposed system and dataset.
 
+
+## Download 
+#### If you want to complete this work, you can download these: (choose optional)
+- [Isaac Gym](https://github.com/) preview 4.0 (3.0)
+- [Obj_Data](https://github.com/) 
+- [VRC-Dataset](https:)
+- [Pretrained VRCNET Model](https://)
+- [DFG](https://) Dataset.
+- [Pretrained DexFuncGraspNet Model](https://) 
+
+## Enviorment
+#### Two conda env
+- ***annotate*** for - [Grasp pose collection](#grasp-pose-collection), [Grasp Transfer for Dataset Extension](#grasp-transfer-for-dataset-extension)
+, and [DexFuncGraspNet](#dexfuncgraspnet)
+- ***vrcnet*** for - [VRCNET](#vrcnet)
+
+
 ## Grasp pose collection
+
+### Cost-effective Annotaion System
+
 <div align=center>
 <img src="pic/method-pipeline2.png" width="840px">
 </div>
@@ -98,7 +118,7 @@ export LD_LIBRARY_PATH=/home/your/path/to/anaconda3/envs/annotate/lib
 ### Process steps
 
 
-
+- Download [Obj_Data](https://github.com/) 
 - Set the cameras in real as shown in the figure.
 
 - Follow the instruction from [handpose3d](https://github.com/TemugeB/handpose3d), get the camera_paremeters folder, or use mine.
@@ -122,7 +142,7 @@ cd IsaacGym/python
 python grasp_gym_runtime_white_new_data.py --pipeline cpu --grasp_mode dynamic --idx 0 --instance 0
 ```
 
-if you think this grasp is good grasp, press blank and poses can be saved, try to collect less than 30 grasps, and click **x** in isaacgym in the top right to close. The grasp pose could be saved in dir ***Grasp_Pose/***.
+- If you think this grasp is good grasp, press blank and poses can be saved, try to collect less than 30 grasps, and click **x** in isaacgym in the top right to close. The grasp pose could be saved in dir ***Grasp_Pose/***.
 
 - After collection, unit axis for grasps in ***/Tink_Grasp_Transfer/Dataset/Grasps/*** in order to learn sdf function of each category.
 ```bash
@@ -134,7 +154,11 @@ python trans_unit.py
 python shadow_dataset_human_shadow_add_issacgym_system_pytorch3d_mesh_new_dataset_multi_dexterous.py --idx 0 --instance 0 --cam_1 6 --cam_2 4
 ```
 
-
+- Visualization 
+```bash
+## put .pkl in to visual_dict
+python show_data_mesh.py
+```
 
 
 
@@ -186,6 +210,7 @@ make -j8
 ### Process steps
 - The same process using Tink.
 ```bash
+cd Tink_Grasp_Transfer/
 python generate_sdf.py --idx 0
 python train_deep_sdf.py --idx 0
 python reconstruct_train.py --idx 0 --mesh_include
@@ -204,9 +229,15 @@ sh transfer.sh
 ```bash
 cd ../../../IsaacGym/python/collect_grasp/
 # save the success grasp
-python grasp_gym_newdata_clean.py 
+sh run_clean.sh
 # unit axis of dataset
 python trans_unit_dataset_func.py
+
+```
+- You can change the grasp in to folder to make them small size
+```bash
+cd DexFuncGraspNet/Grasps_Dataset
+python data_process_m.py
 ```
 - Till now, the grasp dataset in folder: ***Annotation/Tink_Grasp_Transfer/Dataset/Grasps***, each grasps used for training in /0_unit_025_mug/sift/unit_mug_s009/new, which object quat are all [1 0 0 0], at same axis.
 
@@ -217,36 +248,99 @@ python trans_unit_dataset_func.py
 <img src="pic/DexFuncGrasp.png" width="640px">
 </div>
 
-- We collect grasps through steps above. And name DFG dataset.
-- Download source meshes and grasp labels for 12 categories from [DFG](https://shapenet.org/download/shapenetcore) dataset.
+- We collect objects from online dataset such as OakInk, and collect grasps through steps above. we name it DFG dataset.
+- Download source meshes and grasp labels for 12 categories from [DFG](https://) dataset.
 - Arrange the files as follows:
 ```
-|-- DFG_dataset
-    |-- Annotation
-        |-- DFG_dataset
-            |-- Grasps
-                |-- 0_unit_025_mug
-                |-- 0_unit_mug_s001
-                |-- 1_unit_bowl_s101
-                |-- 1_unit_bowl_s102
-                |-- 4_unit_bottle12
-                |-- 4_unit_bottle13
+|-- DexFuncGraspNet
+    |-- Grasps_Dataset
+        |-- train
+            |-- 0_unit_025_mug ##labeled objects
+                |--unit_mug_s009.npy ##transferred objects
+                |--unit_mug_s010.npy
+                |--unit_mug_s011.npy
                 | ...
+                | ...
+            |-- 0_unit_mug_s001
+            |-- 1_unit_bowl_s101
+            |-- 1_unit_bowl_s102
+            |-- 4_unit_bottle12
+            |-- 4_unit_bottle13
+            | ...
+        |-- test ###for testing
+
 ```
 
-## Dexterous Grasp Generation Baseline 
+## DexFuncGraspNet
 <div align=center>
 <img src="pic/network.png" width="740px">
 </div>
 
 - As we propose this dataset, we provide the baseline method based on CVAE as shown in figure above:
 
-- First, we train the off-the-shelf 
+### VRCNet
 
-## Simulation Experiment
+- First, we train the off-the-shelf [VRCNET](https://github.com/paul007pl/VRCNet) using our DFG dataset.
+
+
+<div align=center>
+<img src="pic/1.png" alt="input" class="img-responsive" width="35.1%" />
+<img src="pic/2.png" alt="input" class="img-responsive" width="21.1%" />          
+<img src="pic/3.png" alt="input" class="img-responsive" width="23.1%" />
+</div>
+          
+- We use Pytorch3D to generate different view of partial point cloud.
+
+    ```bash
+    cd data_preprocess/
+    sh process.sh
+    ```
+- OR Partial-Complete dataset from our DFG dataset can be download here : [VRC-Dataset](https:)
+- put in VRCNET-DFG/data/complete_pc , VRCNET-DFG/data/render_pc_for_completion
+- Train VRCNET
+
+    - [Pretrained VRCNET Model](https://) for simulation is provided. put it in 
+    - VRCNET-DFG/log/vrcnet_cd_debug/best_cd_p_network.pth
+
+    ```bash
+    ### change cfgs/vrcnet.yaml --load_model
+    cd ../
+    python train.py --config cfgs/vrcnet.yaml
+    ### change cfgs/vrcnet.yaml --load_model
+    python test.py --config cfgs/vrcnet.yaml # for test 
+    ```
+
+### CVAE
+
+- Second, we train the CVAE grasp generation moudle.
+- [Pretrained DexFuncGraspNet Model](https://) for simulation is provided. put it in 
+    - DexFuncGraspNet/checkpoints/vae_lr_0002_bs_64_scale_1_npoints_128_radius_02_latent_size_2/latest_net.pth
+    ```bash
+    cd DexFuncGraspNet/
+    # train cvae grasp generation net
+    python train_vae.py --num_grasps_per_object 64 ###64 means batch_size(default:64)
+    # generate grasps on test set
+    python test.py # grasps generated in folder DexFuncGraspNet/test_result_sim [we use results from VRCNET]
+    ```
+### Optimize
+
+- Third, the Refinement is using Pytorch Adam Optimizer.
+    ```bash
+    python refine_after_completion.py # grasps optimized in folder DexFuncGraspNet/test_result_sim_refine
+    ```
+## Simulation Experiment (BASELINE)
 <div align=center>
 <img src="pic/simulation_result2.png" width="740px">
 </div>
+
+- run the grasp verify in IsaacGym and get the success rate
+```bash
+cd ../../../IsaacGym/python/collect_grasp/
+# simulation verify 
+sh run_clean_test_sim.sh
+# calcutate final success rate
+python success_caulcate.py
+```
 
 ## Acknowledgments
 
