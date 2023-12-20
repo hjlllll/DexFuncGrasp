@@ -4,7 +4,7 @@
     <p align="center">Jinglue Hang, Xiangbo Lin&dagger;, Tianqiang Zhu, Xuanheng Li, Rina Wu, Xiaohong Ma and Yi Sun;<br />
     Dalian University of Technology<br />
     &dagger; corresponding author<br />
-    <a href='https://hjlllll.github.io/DFG/'>project page</a> | 
+    <a href='https://hjlllll.github.io/DFG/'>project page</a> 
 
 </p>
 
