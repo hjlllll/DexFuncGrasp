@@ -42,20 +42,21 @@ Robot grasp dataset is the basis of designing the robot’s grasp generation mod
 
 ## Download 
 #### If you want to complete this work, you can download these: (choose optional)
-- [Isaac Gym](https://github.com/) preview 4.0 (3.0)
-- [Obj_Data](https://github.com/) 
-- [VRC-Dataset](https:)
-- [Pretrained VRCNET Model](https://)
-- [DFG](https://) Dataset.
-- [Pretrained DexFuncGraspNet Model](https://) 
-
+- [Isaac Gym](https://drive.google.com/file/d/1Imk8_GPQ75mYkBS76k2PgHdsZxEHoog-/view?usp=drive_link) preview 4.0 (3.0)
+- [Obj_Data](https://drive.google.com/file/d/1pOJcw1g1dAuC1KwPKKP3nVGtXr39YwmN/view?usp=drive_link) 
+- [VRC-Dataset](https://drive.google.com/file/d/1FJ5-4uw-7dPvpWVau7ChYrn93y0m92C6/view?usp=drive_link)
+- [Pretrained VRCNET Model](https://drive.google.com/file/d/1benvNLM9HmLDlu4Y-AF3LAEn-T0LGRYk/view?usp=drive_link)
+- [DFG-Dataset](https://drive.google.com/file/d/1QVZh5OMwcZJtQJOob_Q5kzr-hBODYChy/view?usp=drive_link) 
+- [Pretrained DexFuncGraspNet Model](https://drive.google.com/file/d/1ytPVvy6u9KeFsI8zaoT3SaTTsKUHUi_j/view?usp=drive_link) 
+- [Baseline-Results](https://drive.google.com/file/d/1fWPR87JSEWzQoTuI-zCkjdaCT95jIQvA/view?usp=drive_link)
 ## Enviorment
 #### Two conda env
 - ***annotate*** for - [Grasp pose collection](#grasp-pose-collection), [Grasp Transfer for Dataset Extension](#grasp-transfer-for-dataset-extension)
-, and [DexFuncGraspNet](#dexfuncgraspnet)
-- ***vrcnet*** for - [VRCNET](#vrcnet)
-
-
+, and [DexFuncGraspNet](#dexfuncgraspnet).
+- ***vrcnet*** for - [VRCNET](#vrcnet) 
+    - Follow the instruction from [vrcnet-project](https://github.com/paul007pl/VRCNet) to create conda env.
+- ***dexfuncgrasp*** for - [DexFuncGraspNet](#dexfuncgraspnet) - [CVAE](#cvae).
+    
 ## Grasp pose collection
 
 ### Cost-effective Annotaion System
@@ -89,7 +90,7 @@ one realsense camera ==== we use Inter SR305
 
 - [pytorch-kinematics](https://github.com/PKU-EPIC/DexGraspNet/tree/main/thirdparty/pytorch_kinematics/pytorch_kinematics)  0.3.0 
 
-- [Isaac Gym](https://github.com/) preview 4.0 (3.0)
+- [Isaac Gym](https://drive.google.com/file/d/1Imk8_GPQ75mYkBS76k2PgHdsZxEHoog-/view?usp=drive_link) preview 4.0 (3.0)
 
 - CUDA 11.1
 
@@ -117,8 +118,21 @@ export LD_LIBRARY_PATH=/home/your/path/to/anaconda3/envs/annotate/lib
 
 ### Process steps
 
-
-- Download [Obj_Data](https://github.com/) 
+- Download [Isaac Gym](https://drive.google.com/file/d/1Imk8_GPQ75mYkBS76k2PgHdsZxEHoog-/view?usp=drive_link) preview 4.0 (3.0)
+    ```bash
+    |-- Annotation
+        |-- IsaacGym
+    ```
+- Download [Obj_Data](https://drive.google.com/file/d/1pOJcw1g1dAuC1KwPKKP3nVGtXr39YwmN/view?usp=drive_link) 
+    ```bash
+    |-- Annotation
+        |-- IsaacGym
+            |-- assets
+                |-- urdf
+                    |-- off
+                        |-- Obj_Data
+                        |-- Obj_Data_urdf
+    ```
 - Set the cameras in real as shown in the figure.
 
 - Follow the instruction from [handpose3d](https://github.com/TemugeB/handpose3d), get the camera_paremeters folder, or use mine.
@@ -156,7 +170,7 @@ python shadow_dataset_human_shadow_add_issacgym_system_pytorch3d_mesh_new_datase
 
 - Visualization 
 ```bash
-## put .pkl in to visual_dict
+# Put .pkl in to Annotation/visual_dict/new/
 python show_data_mesh.py
 ```
 
@@ -249,7 +263,7 @@ python data_process_m.py
 </div>
 
 - We collect objects from online dataset such as OakInk, and collect grasps through steps above. we name it DFG dataset.
-- Download source meshes and grasp labels for 12 categories from [DFG](https://) dataset.
+- Download source meshes and grasp labels for 12 categories from [DFG-Dataset](https://drive.google.com/file/d/1QVZh5OMwcZJtQJOob_Q5kzr-hBODYChy/view?usp=drive_link) dataset.
 - Arrange the files as follows:
 ```
 |-- DexFuncGraspNet
@@ -295,14 +309,27 @@ python data_process_m.py
     cd data_preprocess/
     sh process.sh
     ```
-- OR Partial-Complete dataset from our DFG dataset can be download here : [VRC-Dataset](https:)
-- put in VRCNET-DFG/data/complete_pc , VRCNET-DFG/data/render_pc_for_completion
+- OR Partial-Complete dataset from our DFG dataset can be download here : [VRC-Dataset](https://drive.google.com/file/d/1FJ5-4uw-7dPvpWVau7ChYrn93y0m92C6/view?usp=drive_link)
+    ```bash
+    |-- VRCNET-DFG
+        |-- data
+            |-- complete_pc
+            |-- render_pc_for_completion
+    ```
+
 - Train VRCNET
 
-    - [Pretrained VRCNET Model](https://) for simulation is provided. put it in 
-    - VRCNET-DFG/log/vrcnet_cd_debug/best_cd_p_network.pth
+    - [Pretrained VRCNET Model](https://drive.google.com/file/d/1benvNLM9HmLDlu4Y-AF3LAEn-T0LGRYk/view?usp=drive_link) for simulation is provided.
+    
+    ```bash
+    |-- VRCNET-DFG
+        |--log
+            |--vrcnet_cd_debug
+                |--best_cd_p_network.pth
+    ```
 
     ```bash
+    conda activate vrcnet
     ### change cfgs/vrcnet.yaml --load_model
     cd ../
     python train.py --config cfgs/vrcnet.yaml
@@ -313,8 +340,32 @@ python data_process_m.py
 ### CVAE
 
 - Second, we train the CVAE grasp generation moudle.
-- [Pretrained DexFuncGraspNet Model](https://) for simulation is provided. put it in 
-    - DexFuncGraspNet/checkpoints/vae_lr_0002_bs_64_scale_1_npoints_128_radius_02_latent_size_2/latest_net.pth
+- Dependencies
+    - pytorch 1.7.1
+    - [Pointnet2_Pytorch](https://github.com/erikwijmans/Pointnet2_PyTorch)
+    - open3d 0.9.0
+- Common Packages
+
+    ```bash
+    conda create -n dexfuncgrasp python==3.7
+    conda activate dexfuncgrasp
+    
+    pip install torch==1.7.1
+
+    git clone https://github.com/erikwijmans/Pointnet2_PyTorch
+    cd Pointnet2_PyTorch/pointnet2_ops_lib/
+    pip install -e.
+
+    pip install trimesh tqdm open3d==0.9.0 pyyaml easydict pyquaternion scipy matplotlib
+    ```
+- [Pretrained DexFuncGraspNet Model](https://drive.google.com/file/d/1ytPVvy6u9KeFsI8zaoT3SaTTsKUHUi_j/view?usp=drive_link) for simulation is provided.
+    ```bash
+    |-- DexFuncGraspNet
+        |-- checkpoints
+            |-- vae_lr_0002_bs_64_scale_1_npoints_128_radius_02_latent_size_2
+                |-- latest_net.pth
+    ```
+
     ```bash
     cd DexFuncGraspNet/
     # train cvae grasp generation net
@@ -328,6 +379,15 @@ python data_process_m.py
     ```bash
     python refine_after_completion.py # grasps optimized in folder DexFuncGraspNet/test_result_sim_refine
     ```
+
+### Visualize
+- Put .pkl in to Annotation/visual_dict/new/
+
+    ```bash
+    cd ../Annotation/visual_dict/new/
+    python show_data_mesh.py
+    ```
+
 ## Simulation Experiment (BASELINE)
 <div align=center>
 <img src="pic/simulation_result2.png" width="740px">
@@ -341,6 +401,8 @@ sh run_clean_test_sim.sh
 # calcutate final success rate
 python success_caulcate.py
 ```
+
+- Our baseline results can be download here : [Baseline-Results](https://drive.google.com/file/d/1fWPR87JSEWzQoTuI-zCkjdaCT95jIQvA/view?usp=drive_link). And run bash above.
 
 ## Acknowledgments
 
