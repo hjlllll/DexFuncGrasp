@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<world>
+	<graspableBody>
+		<filename>/hjl_data/mug/unit_025_mug.xml</filename>
+		<transform>
+			<fullTransform>(0.38707688 -0.61944985 0.52259374 0.43971464)[+0 +0 +0]</fullTransform>
+		</transform>
+	</graspableBody>
+	<robot>
+		<filename>/home/lm/graspit/models/robots/ShadowHand_gai/our_hand.xml</filename>
+		<dofValues>0.32467374 -0.31984606 0.59244025 0.5751186 0.0 -0.21889992 1.0380423 1.3951304 0.0 0.20360819 0.9633005 1.0472 0.0 0.08349361 0.62762487 1.3957074 0.0 0.48507196 1.122 0.007038915 0.30900866 0.3489378</dofValues>
+		<transform>
+			<fullTransform>(0.2896072 0.5406232 -0.007385373 0.7898098)[-90.04327 -38.58006 -102.938385]</fullTransform>
+		</transform>
+	</robot>
+	<camera>
+		<position>-2.21912 -6.21883 +479.86</position>
+		<orientation>+0 +0 +0 +1</orientation>
+		<focalDistance>+300.068</focalDistance>
+	</camera>
+</world>
