@@ -404,6 +404,23 @@ python success_caulcate.py
 
 - Our baseline results can be download here : [Baseline-Results](https://drive.google.com/file/d/1fWPR87JSEWzQoTuI-zCkjdaCT95jIQvA/view?usp=drive_link). And run bash above.
 
+    |          Category        |    Successrate    |  Train/Test  |
+    | :----------------------: | :---------------: | :-----------:| 
+    |      Bowl                |   69.48           |    43/5      |  
+    |      Lightbulb           |   74.23           |   44/7       |   
+    |      Bottle              |   68.62           |   51/8       |    
+    |      Flashlight          |   91.03           |   44/6       |    
+    |      Screwdriver         |   75.60           |   32/7       |     
+    |      Spraybottle         |   58.07           |   20/3       |    
+    |      Stapler             |   85.77           |   28/6       |    
+    |      Wineglass           |   55.70           |   35/5       |    
+    |      Mug                 |   54.62           |   57/7       |    
+    |      Drill               |   55.00           |   10/2       |     
+    |      Camera              |   63.33           |   87/7       |     
+    |      Teapot              |   57.14           |   41/7       |     
+    |      Total               | **68.50**         |   492/67     | 
+
+Total success rate is the average each success rate. not successgrasp/total grasp.
 ## Acknowledgments
 
 This repo is based on [TeachNet](https://github.com/TAMS-Group/TeachNet_Teleoperation), [handpose3d](https://github.com/TemugeB/handpose3d), [OakInk](https://github.com/oakink/Tink), [DeepSDF](https://github.com/oakink/DeepSDF_OakInk),  [TransGrasp](https://github.com/yanjh97/TransGrasp), [6dofgraspnet](https://github.com/jsll/pytorch_6dof-graspnet), [VRCNET](https://github.com/paul007pl/VRCNet). Many thanks for their excellent works.
