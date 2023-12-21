@@ -50,7 +50,7 @@ Robot grasp dataset is the basis of designing the robot’s grasp generation mod
 - [Pretrained DexFuncGraspNet Model](https://drive.google.com/file/d/1ytPVvy6u9KeFsI8zaoT3SaTTsKUHUi_j/view?usp=drive_link) 
 - [Baseline-Results](https://drive.google.com/file/d/1fWPR87JSEWzQoTuI-zCkjdaCT95jIQvA/view?usp=drive_link)
 ## Enviorment
-#### Two conda env
+#### Three conda env
 - ***annotate*** for - [Grasp pose collection](#grasp-pose-collection), [Grasp Transfer for Dataset Extension](#grasp-transfer-for-dataset-extension)
 , and [DexFuncGraspNet](#dexfuncgraspnet).
 - ***vrcnet*** for - [VRCNET](#vrcnet) 
