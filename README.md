@@ -284,6 +284,7 @@ python data_process_m.py
         |-- test ###for testing
 
 ```
+Some of our grasp poses are in collision. we are sorry for not condisering this more.
 
 ## DexFuncGraspNet
 <div align=center>
