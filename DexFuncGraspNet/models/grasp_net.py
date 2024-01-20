@@ -288,7 +288,3 @@ class GraspNetModel:
                 correct = (abs((prediction - self.recover_label)).sum(-1)<5).sum().item()
                 correct_idx = (abs((prediction - self.recover_label)).sum(-1)<5)
                 return correct, len(self.recover_label), correct_idx
-
-                correct = (abs((prediction - self.recover_label)).sum(-1)<2.5).sum().item()
-                correct_idx = (abs((prediction - self.recover_label)).sum(-1)<2.5)
-                return correct, len(self.recover_label), correct_idx
