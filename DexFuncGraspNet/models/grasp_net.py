@@ -281,4 +281,4 @@ class GraspNetModel:
                         device=self.device)
                     return reconstruction_loss, predicted_cp
             else:
-                return 
+                return None
