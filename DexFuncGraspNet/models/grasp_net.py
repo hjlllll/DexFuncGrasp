@@ -281,10 +281,4 @@ class GraspNetModel:
                         device=self.device)
                     return reconstruction_loss, predicted_cp
             else:
-                index = [0, 1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 20, 21]
-                self.angles[:, [3, 7, 11, 15]] += self.angles[:, [4, 8, 12, 16]] #  
-                self.recover_label = torch.cat((self.r, self.t, self.angles[:, index]), dim=1)  
-
-                correct = (abs((prediction - self.recover_label)).sum(-1)<5).sum().item()
-                correct_idx = (abs((prediction - self.recover_label)).sum(-1)<5)
-                return correct, len(self.recover_label), correct_idx
+                return 
