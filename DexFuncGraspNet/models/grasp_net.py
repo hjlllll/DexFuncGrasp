@@ -159,8 +159,8 @@ class GraspNetModel:
             self.kl_loss = self.criterion[0](mu, logvar, device=self.device)
 
             loss_l1 = torch.nn.MSELoss() 
-            #index = [0, 1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 20, 21]
-            #self.angles[:, [3, 7, 11, 15]] += self.angles[:, [4, 8, 12, 16]] # 20230202 发现应该加上最后一个关节再索引去掉
+            index = [0, 1, 2, 3, 5, 6, 7, 9, 10, 11, 13, 14, 15, 17, 18, 19, 20, 21]
+            self.angles[:, [3, 7, 11, 15]] += self.angles[:, [4, 8, 12, 16]] # 20230202 发现应该加上最后一个关节再索引去掉
 
             self.angle_loss = loss_l1(predicted_cp[:, 7:],  self.angles[:, index])
             self.r_loss,self.t_loss = loss_l1(outputs_r, self.r), loss_l1(outputs_t*0.001, self.t)
