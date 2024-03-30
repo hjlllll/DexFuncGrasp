@@ -430,7 +430,14 @@ And our previous works about functional grasp generation as follows: [Toward-Hum
 ## Citation
 
 ```BibTeX
-@inproceedings{
+@inproceedings{hang2024dexfuncgrasp,
+  title={DexFuncGrasp: A Robotic Dexterous Functional Grasp Dataset Constructed from a Cost-Effective Real-Simulation Annotation System.},
+  author={Hang, Jinglue and Lin, Xiangbo and Zhu, Tianqiang and Li, Xuanheng and Wu, Rina and Ma, Xiaohong and Sun, Yi},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence},
+  volume={38},
+  number={9},
+  pages={10306-10313},
+  year={2024}
 }
 ```
 ## License
