@@ -40,6 +40,7 @@
 Robot grasp dataset is the basis of designing the robot’s grasp generation model. Compared with the building grasp dataset for Low-DOF grippers, it is harder for High-DOF dexterous robot hand. Most current datasets meet the needs of generating stable grasps, but they are not suitable for dexterous hands to complete human-like functional grasp, such as grasp the handle of a cup or pressing the button of a flashlight, so as to enable robots to complete subsequent functional manipulation action autonomously, and there is no dataset with functional grasp pose annotations at present. This paper develops a unique Cost-Effective Real-Simulation Annotation System by leveraging natural hand’s actions. The system is able to capture a functional grasp of a dexterous hand in a simulated environment assisted by human demonstration in real world. By using this system, dexterous grasp data can be collected efficiently as well as cost-effective. Finally, we construct the first dexterous functional grasp dataset with rich pose annotations. A Functional Grasp Synthesis Model is also provided to validate the effectiveness of the proposed system and dataset.
 
 
+
 ## Download 
 #### If you want to complete this work, you can download these: (choose optional)
 - [Isaac Gym](https://drive.google.com/file/d/1Imk8_GPQ75mYkBS76k2PgHdsZxEHoog-/view?usp=drive_link) preview 4.0 (3.0)
@@ -49,6 +50,7 @@ Robot grasp dataset is the basis of designing the robot’s grasp generation mod
 - [DFG-Dataset](https://drive.google.com/file/d/1QVZh5OMwcZJtQJOob_Q5kzr-hBODYChy/view?usp=drive_link) 
 - [Pretrained DexFuncGraspNet Model](https://drive.google.com/file/d/1ytPVvy6u9KeFsI8zaoT3SaTTsKUHUi_j/view?usp=drive_link) 
 - [Baseline-Results](https://drive.google.com/file/d/1fWPR87JSEWzQoTuI-zCkjdaCT95jIQvA/view?usp=drive_link)
+- ！！ [missing upload files](https://drive.google.com/file/d/1SBY-rzP30cfzK4txc2PaO6UF3aveOPC6/view?usp=sharing)
 ## Enviorment
 #### Three conda env
 - ***annotate*** for - [Grasp pose collection](#grasp-pose-collection), [Grasp Transfer for Dataset Extension](#grasp-transfer-for-dataset-extension)
